@@ -1,0 +1,22 @@
+{
+  "name": "react_learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saravan-patidar/REACT_LEARN_NR.git"
+  },
+  "author": "shrvn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saravan-patidar/REACT_LEARN_NR/issues"
+  },
+  "homepage": "https://github.com/saravan-patidar/REACT_LEARN_NR#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
+}
