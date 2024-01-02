@@ -1,8 +1,10 @@
 # Chapter 01 -> Inception
 
-Theory -
-● What is Emmet?
-● Difference between a Library and Framework?
+<br>
+<h3>Theory -</h3>
+<ul>
+<li>What is Emmet?</li>
+<li>Difference between a Library and Framework?</li>
 ● What is CDN? Why do we use it?
 ● Why is React known as React?
 ● What is crossorigin in script tag?
