@@ -1,20 +1,24 @@
 # Chapter 01 -> Inception
 
 <br>
-<h3>Theory -</h3>
+<h3>Theory -</h3><br>
 <ul>
 <li>What is Emmet?</li>
 <li>Difference between a Library and Framework?</li>
-● What is CDN? Why do we use it?
-● Why is React known as React?
-● What is crossorigin in script tag?
-● What is diference between React and ReactDOM
-● What is difference between react.development.js and react.production.js files via CDN?
-● What is async and defer? - see my Youtube video ;)
-Coding -
-● Set up all the tools in your laptop
-○ VS Code
-○ Chrome
+<li>What is CDN? Why do we use it?</li>
+<li>Why is React known as React?</li>
+<li>What is crossorigin in script tag?</li>
+<li>What is diference between React and ReactDOM</li>
+<li>What is difference between react.development.js and react.production.js files via CDN?</li>
+<li>What is async and defer? - see my Youtube video ;</li><br>
+
+<h3>Coding -</h3>
+<ul>
+<li>Set up all the tools in your laptop
+    <li>VS Code</li>
+    <li>Chrome</li>
+    <li>Extensions of Chrome</li>
+</li>
 ○ Extensions of Chrome
 ● Create a new Git repo
 ● Build your first Hello World program using,
