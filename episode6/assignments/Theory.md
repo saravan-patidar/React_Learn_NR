@@ -6,6 +6,8 @@ A: `Microservice` - also known as the microservice architecture - is an architec
 Microservices architectures make applications easier to scale and faster to develop, enabling innovation and accelerating time-to-market for new features.
 means we are dividing software into small, well-defined modules enables teams to use functions for multiple purposes.
 
+> A microservices architecture is a type of application architecture where the application is developed as a collection of services. It provides the framework to develop, deploy, and maintain microservices architecture diagrams and services independently.
+
 - Benefits of Microservices:
   - Flexible Scaling
   - Easy Deployment
@@ -13,10 +15,22 @@ means we are dividing software into small, well-defined modules enables teams to
   - Reusable Code
   - Resilience
 
+---
+
+Microservices are a software architectural style where an application is built as a collection of small, independent services that work together to perform specific tasks. Think of them as individual building blocks that, when combined, create a larger and more complex application.
+
+In a simple way, let's imagine a traditional monolithic application as a single big box that contains all the functionalities of the application. On the other hand, microservices can be compared to smaller modular Lego bricks. Each brick represents a specific functionality or service, such as user authentication, payment processing, or database management. These bricks can be combined and arranged in different ways to create a customized and flexible application.
+
+The key idea behind microservices is that each service is responsible for a specific task and can be developed, deployed, and scaled independently. They communicate with each other using lightweight protocols, such as HTTP, and can be built using different programming languages or technologies. This modular approach offers several benefits, including easier maintenance, scalability, fault isolation, and the ability to adopt new technologies or make changes to specific services without impacting the entire application.
+
+## Microservices are small, independent services that work together to create a larger application. They offer flexibility, scalability, and easier maintenance by breaking down complex systems into smaller, manageable components.
+
 ## Q: What is `Monolith architecture`?
 
 A: A `Monolith architecture` is a traditional model of a software program, which is built as a unified unit that is self-contained and independent from other applications. A monolithic architecture is a singular, large computing network with one code base that couples all of the business concerns together. To make a change to this sort of application requires updating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface. This makes updates restrictive and time-consuming.
 means we are not dividing software into small, well-defined modules, we use every services like, database, server or a UI of the application, in one Application file.
+
+- If all the functionalities of a project exist in a `single codebase`, then that application is known as a `monolithic application`. We all must have designed a monolithic application in our lives in which we were given a problem statement and were asked to design a system with various functionalities. We design our application in various layers like presentation, service, and persistence and then deploy that codebase as a single jar/war file. This is nothing but a monolithic application, where `“mono”` represents the single codebase containing all the required functionalities.
 
 ## Q: What is the difference between `Monolith and Microservice`?
 
