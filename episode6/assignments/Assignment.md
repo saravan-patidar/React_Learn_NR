@@ -1,25 +1,32 @@
 ## Namaste React Course by Akshay Saini
 
-# Chapter 05 - Let's get Hooked!
+# Chapter 06 - Exploring the world
 
 ## Theory Assignment:
 
-- What is difference between `Named exports` and `Default exports` and `* as exports` ?
-- What is importance of `config.js` File ?.
-- How can I write comments in `JSX`?
-- What are `React Hooks` ?
-- Why do we need `useState() ` Hooks ?
+- What is `Microservice`?
+- What is `Monolith architecture`?
+- What is the `difference` between `Monolith and Microservice?
+- Why do we need a `useEffect Hook`?
+- What is `Optional Chaining`?
+- What is `Shimmer UI`?
+- What is the `difference` between `JS expression and JS statement`?
+- What is `Conditional Rendering`? explain with a code example.
+- What is `CORS`?
+- What is `async and await`?
+- What is the use of `const json = await data.json()`; in `getRestaurants()`?
 
 ## Coding Assignment:
 
-- Clean up your Code
-- Create a Folder structure of your App
-- Make different file of each components
-- Create a config file
-- Use all types of import and exports
-- Create a Search box in your app
-- Use useState to create a variable and bind it to the input box
-- Try to make your Search-bar work
+- Play with the `useEffect Hook` to see when it is called? (before or after render)
+- Play with the `dependency array` in useEffect Hook.
+- Play with the `developer console` by putting a `debugger` in render and `useEffect`.
+- Call an `actual API call`.
+- `Handle Error` in your `API call`.
+- Build `Shimmer UI` when `data is not loaded`.
+- `Render your UI` with `actual API data`.
+- Make `Search functionality` work.
+- Make a `Login Logout` button that `toggles with a state`.
 
 ## References:
 

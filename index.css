@@ -85,18 +85,18 @@
   justify-content: center;
 }
 .search-box input {
-  padding: 3px;
+  padding: 10px;
   padding-left: 10px;
   width: 90%;
-  font-size: 20px;
+  font-size: 12px;
   border: 1px solid red;
   outline: none;
   border-radius: 10px 0px 0px 10px;
 }
 .search-box .search-btn {
-  width: 10%;
-  height: 31px;
-  padding-block: 3px;
+  max-width: 11%;
+  height: 36px;
+  padding: 3px;
   font-size: 15px;
   font-weight: 600;
   background-color: lightcoral;
@@ -104,7 +104,9 @@
   border-radius: 0px 10px 10px 0px;
   cursor: pointer;
 }
-
+.search-box .search-btn:hover {
+  background-color: #568ee3;
+}
 .res-container {
   width: 90vw;
   margin: auto;
