@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import foodLogo from "../../imges/food-logo.jpg";
 
 const Header = () => {
-  const [login, setLogin] = useState("Login");
+  const [login, setLogin] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="header">
       <div className="h-logo">
@@ -28,14 +29,36 @@ const Header = () => {
           </Link>
         </li>
         <li>Card</li>
-        <button
+        {/* <button
           className="login"
           onClick={() => {
             login === "Login" ? setLogin("Logout") : setLogin("Login");
+            <Link to="/login"></Link>;
           }}
         >
           {login}
-        </button>
+        </button> */}
+        {login ? (
+          <button
+            className="login"
+            onClick={() => {
+              setLogin(false);
+              navigate("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            className="login"
+            onClick={() => {
+              setLogin(true);
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+        )}
       </ul>
     </div>
   );

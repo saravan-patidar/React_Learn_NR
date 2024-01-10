@@ -18,7 +18,7 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     const resLists =
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(resLists);
     setRestNameFilter(resLists);

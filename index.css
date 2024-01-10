@@ -283,3 +283,39 @@
   height: 100px;
   border-radius: 12px;
 }
+
+/*  ---- Login Form Styling  */
+.login-form {
+  width: 400px;
+  margin: auto;
+  margin-block: 60px;
+  background: #9e9eee;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #9e9eee;
+}
+.login-form h2 {
+  text-align: center;
+}
+
+.form {
+  width: 60%;
+  margin: auto;
+  margin-block: 14px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.label {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.form input {
+  padding: 5px;
+  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+}
