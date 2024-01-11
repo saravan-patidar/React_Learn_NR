@@ -1,143 +1,89 @@
-# Chapter 06 - Exploring the world
+## Namaste React Course by Akshay Saini
 
-## Q: What is `Microservice`?
+# Chapter 08 - Let's get Classy
 
-A: `Microservice` - also known as the microservice architecture - is an architectural and organizational approach to software development where software is composed of small independent services like database, server or a UI of the application, that communicate over well-defined APIs. These services are owned by small, self-contained teams.
-Microservices architectures make applications easier to scale and faster to develop, enabling innovation and accelerating time-to-market for new features.
-means we are dividing software into small, well-defined modules enables teams to use functions for multiple purposes.
+## Q: How do you create `Nested Routes` react-router-dom configuration?
 
-> A microservices architecture is a type of application architecture where the application is developed as a collection of services. It provides the framework to develop, deploy, and maintain microservices architecture diagrams and services independently.
-
-- Benefits of Microservices:
-  - Flexible Scaling
-  - Easy Deployment
-  - Technological Freedom
-  - Reusable Code
-  - Resilience
-
----
-
-Microservices are a software architectural style where an application is built as a collection of small, independent services that work together to perform specific tasks. Think of them as individual building blocks that, when combined, create a larger and more complex application.
-
-In a simple way, let's imagine a traditional monolithic application as a single big box that contains all the functionalities of the application. On the other hand, microservices can be compared to smaller modular Lego bricks. Each brick represents a specific functionality or service, such as user authentication, payment processing, or database management. These bricks can be combined and arranged in different ways to create a customized and flexible application.
-
-The key idea behind microservices is that each service is responsible for a specific task and can be developed, deployed, and scaled independently. They communicate with each other using lightweight protocols, such as HTTP, and can be built using different programming languages or technologies. This modular approach offers several benefits, including easier maintenance, scalability, fault isolation, and the ability to adopt new technologies or make changes to specific services without impacting the entire application.
-
-## Microservices are small, independent services that work together to create a larger application. They offer flexibility, scalability, and easier maintenance by breaking down complex systems into smaller, manageable components.
-
-## Q: What is `Monolith architecture`?
-
-A: A `Monolith architecture` is a traditional model of a software program, which is built as a unified unit that is self-contained and independent from other applications. A monolithic architecture is a singular, large computing network with one code base that couples all of the business concerns together. To make a change to this sort of application requires updating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface. This makes updates restrictive and time-consuming.
-means we are not dividing software into small, well-defined modules, we use every services like, database, server or a UI of the application, in one Application file.
-
-- If all the functionalities of a project exist in a `single codebase`, then that application is known as a `monolithic application`. We all must have designed a monolithic application in our lives in which we were given a problem statement and were asked to design a system with various functionalities. We design our application in various layers like presentation, service, and persistence and then deploy that codebase as a single jar/war file. This is nothing but a monolithic application, where `“mono”` represents the single codebase containing all the required functionalities.
-
-## Q: What is the difference between `Monolith and Microservice`?
-
-A: With `monolithic architectures`, all processes are tightly coupled and run as a single service. This means that if one process of the application experiences a spike in demand, the entire architecture must be scaled. Adding or improving a monolithic application’s features becomes more complex as the code base grows. This complexity limits experimentation and makes it difficult to implement new ideas. Monolithic architectures add risk for application availability because many dependent and tightly coupled processes increase the impact of a single process failure.
-
-With a `microservices architecture`, an application is built as independent components that run each application process as a service. These services communicate via a well-defined interface using lightweight APIs. Services are built for business capabilities and each service performs a single function. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application.
-![Monolith and Microservice](../Coding/Images/monolith-microservices.png)
-
-## Q: Why do we need a `useEffect Hook`?
-
-A: `useEffect Hook` is javascript function provided by `react`. The useEffect Hook allows you to `eliminate side effects` in your components. Some examples of side effects are: `fetching API data`, `directly updating the DOM`, and `setting up subscriptions or timers`, etc can be lead to unwarranted side-effects.
-useEffect accepts `two arguments`, a `callback function` and a `dependency array`. The second argument is optional.
+A: We can create a `Nested Routes` inside a react router configuration as follows:
+first call createBrowserRouter for routing different pages
 
 ```
-useEffect(() => {}, [])
+const router = createBrowserRouter([
+   {
+      path: "/", // show path for routing
+      element: <Parent />, // show component for particular path
+      errorElement: <Error />, // show error component for path is different
+      children: [ // show children component for routing
+         {
+            path: "/path",
+            element: <Child />
+         }
+      ],
+   }
+])
 ```
 
-The `() => {}` is callback function and `[]` is called a empty dependency array.
-If anything that we pass (suppose currentState) inside the `[]` it trigger the callback function and changes the state of the application.
+Now we can create a nested routing for `/path` using `children` again as follows:
 
 ```
-useEffect(() => {
-    setCurrentState("true");
-}, [currentState])
+const router = createBrowserRouter([
+   {
+      path: "/",
+      element: <Parent />,
+      errorElement: <Error />,
+      children: [
+         {
+            path: "/path",
+            element: <Child />,
+            children: [ // nested routing for subchild
+               {
+                  path: "child",      // Don't use '/' because then react-router-dom will understand it it's the direct path
+                  element: <SubChild />,
+               }
+            ],
+         }
+      ],
+   }
+])
 ```
 
-If we do not pass empty dependency array then the useEffect runs everytime when the UI is rendered.
+## Q: Read about `createHashRouter`, `createMemoryRouter` from React Router docs.
 
-```
-useEffect(() => {})
-```
+A: `createHashRouter` is useful if you are unable to configure your web server to direct all traffic to your React Router application. Instead of using normal URLs, it will use the `hash (#)` portion of the URL to manage the "application URL".
+Other than that, it is functionally the same as `createBrowserRouter`.
+For more reference [Read more](https://reactrouter.com/en/main/routers/create-hash-router)
 
-## Q: What is `Optional Chaining`?
+`createMemoryRouter` Instead of using the browsers history a memory router manages it's own history stack in memory. It's primarily useful for testing and component development tools like Storybook, but can also be used for running React Router in any non-browser environment.
+For more reference [Read more](https://reactrouter.com/en/main/routers/create-memory-router)
 
-A: `Optional Chaining` (`?.`) operator accesses an object's property or calls a function. If the object accessed or function called is `undefined or null` , it returns `undefined` instead of throwing an error.
-`Optional Chaining` (`?.`) is good way of accessing the object keys, it prevents the application from being crashed if the key that we are trying to access is not present. If the key is not present then instead of a throwing key error, it returns `undefined`.
+## Q: What is the order of life cycle method calls in `Class Based Components`?
 
-## Q: What is `Shimmer UI`?
+A: Following is the order of lifecycle methods calls in `Class Based Components`:
 
-A: A `Shimmer UI` resembles the page's actual UI, so users will understand how quickly the web or mobile app will load even before the content has shown up. It gives people an idea of what's about to come and what's happening (while UI currently loading) when a page full of content/data takes more than 3 - 5 seconds to load.
-Shimmer UI is a great way for loading the applications. Instead of showing a loading circle we can design a shimmer UI for our application that is good for user experience.
+1. constructor()
+2. render ()
+3. componentDidMount()
+4. componentDidUpdate()
+5. componentWillUnmount()
 
-## Q: What is the difference between `JS expression and JS statement`?
+For more reference [React-Lifecycle-methods-Diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-A: A `JS expression` returns a value that we use in the application. for example:
+## Q: Why do we use `componentDidMount`?
 
-```
-1 + 2 // expresses
-"foo".toUpperCase() // expresses 'FOO'
-console.log(2) // logs '2'
-isTrue ? true : false // returns us a true or false value based on isTrue value
-```
+A: The `componentDidMount()` method allows us to execute the React code when the component is already placed in the DOM (Document Object Model). This method is called during the Mounting phase of the React Life-cycle i.e after the component is rendered.
+We can run any piece of react code to modify the components. For ex. It's the best place to `make API calls`.
 
-A `JS statement`, does not return a value. for example:
+## Q: Why do we use `componentWillUnmount`? Show with example.
 
-```
-let x; // variable declaration
-if () { } // if condition
-```
+A: `componentWillUnmount()` is useful for the cleanup of the application when we switch routes from one place to another. Since we are working with a SPA(Single Page Application) the component process always runs in the background even if we switch to another route. So it is required to stop those processes before leaving the page. If we revisit the same page, a new process starts that affects the browser performance.
+For example, in Repo class, during `componentDidMount()` a timer is set with an interval of every one second to print in console. When the component is unmounted (users moves to a different page), the timer will be running in the background, which we might not even realize and causing huge performance issue. To avoid such situations the cleanup function can be done in componentWillUnmount, in this example `clearInterval`(timer) to clear the timer interval before unmounting Repo component.
 
-If we want to use `JS expression` in JSX, we have to wrap in `{/* expression slot */}` and if we want to use `JS statement` in JSX, we have to wrap in `{(/* statement slot */)}`;
+## Q: (Research) Why do we use `super(props)` in constructor?
 
-## Q: What is `Conditional Rendering`? explain with a code example.
+A: `super(props)` is used to inherit the properties and access of variables of the React parent class when we initialize our component.
+super() is used inside constructor of a class to derive the parent's all properties inside the class that extended it. If super() is not used, then Reference Error : Must call super constructor in derived classes before accessing 'this' or returning from derived constructor is thrown in the console.
+The main difference between super() and super(props) is the this.props is undefined in child's constructor in super() but this.props contains the passed props if super(props) is used.
 
-A: `Conditional rendering` in React works the same way conditions work in `JavaScript`. Use JavaScript operators like `if` or the `conditional operator` to create elements representing the current state, and let React update the UI to match them. for example:
+## Q: (Research) Why can't we have the `callback function` of `useEffect async`?
 
-```
-// Using Ternary operator as a shorthand way or writing an if-else statement
-{isLoggedIn ? (return <UserGreeting />) : (return <GuestGreeting />)};
-// Using an if…else Statement
-{
-  (if (isLoggedIn) {
-    return <UserGreeting />;
-  }else {
-    return <GuestGreeting />;
-  })
-}
-// Using Logical &&
-{isLoggedIn && <button>Logout</button>}
-```
-
-## Q: What is `CORS`?
-
-A: Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources.
-CORS defines a way in which a browser and server can interact to determine whether it is safe to allow the cross-origin request.
-
-## Q: What is `async and await`?
-
-A: `Async`: It simply allows us to write promises-based code as if it was synchronous and it checks that we are not breaking the execution thread. It operates asynchronously via the event loop. Async functions will always return a promise. It makes sure that a promise is returned and if it is not returned then JavaScript automatically wraps it in a promise which is resolved with its value.
-`Await`: Await function is used to wait for the promise. It could be used within the `async` block only. It makes the code wait until the promise returns a result. It only makes the async block wait.
-for example:
-
-```
-// async function getRestaurant to fetch Swiggy API data
-  async function getRestaurants() {
-    const data = await fetch(
-      "Swiggy_API_URL"
-    );
-    const json = await data.json();
-    // we get the Swiggy API data in json format
-    console.log(json);
-  }
-```
-
-## Q: What is the use of `const json = await data.json()`; in `getRestaurants()`?
-
-A: The `data` object, returned by the `await fetch()`, is a generic placeholder for multiple data formats.
-so we can extract the `JSON object` from a `fetch` response by using `await data.json()`.
-`data.json()` is a method on the data object that lets you extract a `JSON object` from the data or response. The method returns a promise because we have used `await` keyword.
-so `data.json()` returns a promise resolved to a `JSON object`.
+A: `useEffect` expects it's callback function to return nothing or return a function (cleanup function that is called when the component is unmounted). If we make the callback function as `async`, it will return a `promise` and the promise will affect the clean-up function from being called.

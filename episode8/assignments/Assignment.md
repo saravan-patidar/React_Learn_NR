@@ -1,33 +1,32 @@
 ## Namaste React Course by Akshay Saini
 
-# Chapter 06 - Exploring the world
+# Chapter 08 - Let's get Classy
 
 ## Theory Assignment:
 
-- What is `Microservice`?
-- What is `Monolith architecture`?
-- What is the `difference` between `Monolith and Microservice?
-- Why do we need a `useEffect Hook`?
-- What is `Optional Chaining`?
-- What is `Shimmer UI`?
-- What is the `difference` between `JS expression and JS statement`?
-- What is `Conditional Rendering`? explain with a code example.
-- What is `CORS`?
-- What is `async and await`?
-- What is the use of `const json = await data.json()`; in `getRestaurants()`?
+- How do you create `Nested Routes react-router-dom` configuration?
+- Read about `createHashRouter`, `createMemoryRouter` from React Router docs.
+- What is the `order of life cycle method calls` in `Class Based Components`?
+- Why do we use `componentDidMount`?
+- Why do we use `componentWillUnmount`? Show with `example`.
+- (Research) Why do we use `super(props)` in `constructor`?
+- (Research) Why `can't we have` the `callback function` of `useEffect async`?
 
 ## Coding Assignment:
 
-- Play with the `useEffect Hook` to see when it is called? (before or after render)
-- Play with the `dependency array` in useEffect Hook.
-- Play with the `developer console` by putting a `debugger` in render and `useEffect`.
-- Call an `actual API call`.
-- `Handle Error` in your `API call`.
-- Build `Shimmer UI` when `data is not loaded`.
-- `Render your UI` with `actual API data`.
-- Make `Search functionality` work.
-- Make a `Login Logout` button that `toggles with a state`.
+- Create `Class Based` Component.
+  - Create 2 `class-based child components`.
+  - `Pass props` from `Parent to child`.
+  - Create a `constructor`.
+  - Create a `state variable` inside child.
+  - Use `this.setState` to update it.
+  - What if there are `multiple state variables`?
+  - Write a `console.log` for each lifecycle method.
+  - Play with the `console logs` to find out the `correct order of their execution`.
+- Create `interval` inside `componentDidMount`?
+  - Use `clearInterval` to `fix the issue` caused by the `interval`
 
 ## References:
 
-- [Code Link](https://bitbucket.org/namastedev/namaste-react-live/src/master/)
+- [React Life Cycle Method Diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+- [Akshay Saini Code Link](https://bitbucket.org/namastedev/namaste-react-live/src/master/)
