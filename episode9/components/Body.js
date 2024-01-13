@@ -27,7 +27,6 @@ const Body = () => {
             const filterList = fiterRestro.filter(
               (item) => item.info.avgRating > 4
             );
-            // console.log(filterList);
             setFilterRestro(filterList);
           }}
         >
