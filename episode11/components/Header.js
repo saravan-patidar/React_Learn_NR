@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   return (
-    <div className="flex p-1 px-20 bg-[#7c84d3] justify-between items-center shadow-2xl shadow-indigo-500/40">
+    <div className="flex p-1 px-20 h-20 z-10 bg-[#7c8ce8] justify-between items-center .header">
       <div className="h-logo">
         <img src={foodLogo} className="logo hover:mix-blend-color-burn" />
       </div>
@@ -16,16 +16,16 @@ const Header = () => {
         <p className="font-bold">
           Online Status: {!onlineStatus ? "🔴" : "🟢"}
         </p>
-        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md">
+        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link to="/">Home</Link>
         </li>
-        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md">
+        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link to="/about">About</Link>
         </li>
-        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md">
+        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link to="/contact">Contact</Link>
         </li>
-        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md">
+        <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link>Cart</Link>
         </li>
         {login ? (

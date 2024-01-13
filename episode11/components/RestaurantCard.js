@@ -5,24 +5,25 @@ const RestaurantCard = ({ resData }) => {
   const { name, cloudinaryImageId, costForTwo, sla, avgRating, cuisines } =
     resData?.info;
   return (
-    <div className="border-black border w-80">
-      <div>
+    <div className="bg-gray-300 border w-60 h-80 m-3 p-2 rounded-xl shadow-my-s hover:bg-indigo-300 transition-all ease-in-out duration-700">
+      <div className="h-2/4 rounded-lg">
         <img
-          className="w-52"
+          className="w-[100%] h-[100%] rounded-lg"
           src={RES_IMG_URl + cloudinaryImageId}
           alt="res-img"
         />
       </div>
       <div>
-        <h3>{name}</h3>
-        <div className="border border-red-600 flex">
-          <h4 className="flex items-center">
-            <img className="w-8" src={starLogo} alt="starLogo" /> {avgRating}
+        <h3 className="font-bold p-1">{name}</h3>
+        <div className=" flex items-center justify-between my-1">
+          <h4 className="flex items-center m-[2px] bg-green-400 px-[3px] rounded-md">
+            <img className="w-4 mx-[2px] " src={starLogo} alt="starLogo" />{" "}
+            {avgRating}
           </h4>
-          <h4>{sla.deliveryTime} Mins</h4>
-          <h3>{costForTwo}</h3>
+          <h4 className="font-semibold">{sla.deliveryTime} Mins</h4>
+          <h3 className="font-bold ">{costForTwo}</h3>
         </div>
-        <p>{cuisines.join(", ")}</p>
+        <p className="text-sm">{cuisines.join(", ")}</p>
       </div>
     </div>
   );

@@ -12,6 +12,9 @@
   color: #222;
 } */
 
+.header {
+  box-shadow: 0 4px 30px #d77e03;
+}
 /* .header {
   padding-inline: 30px;
   background-color: #7c84d3;

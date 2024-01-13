@@ -7,7 +7,7 @@ import RestaurantCard from "../../episode11/components/RestaurantCard";
 const Body = () => {
   const [filterRestro, setFilterRestro] = useState([]);
   const [resList, restNameFilter] = useRestaurants();
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   return (
     <div className="bg-gray-200">
@@ -37,11 +37,12 @@ const Body = () => {
             className="p-2 bg-orange-700 rounded-e-full text-white shadow shadow-orange-300 hover:border-red-400 border"
             onClick={() => {
               const searchData = resList.filter((item) => {
-                if (search.length === 0) return item;
+                // console.log(search + " " + item);
+                if (search === undefined) return item;
                 item.info.name.toLowerCase().includes(search.toLowerCase());
-                setFilterRestro(searchData);
-                setSearch("");
               });
+              setFilterRestro(searchData);
+              setSearch("");
             }}
           >
             Search
@@ -51,7 +52,7 @@ const Body = () => {
       {resList.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="flex justify-evenly flex-wrap w-10/12 border border-red-600 m-auto">
+        <div className="flex justify-center flex-wrap w-10/12 gap-4 m-auto py-9">
           {(filterRestro.length === 0 ? restNameFilter : filterRestro).map(
             (data) => {
               return (
