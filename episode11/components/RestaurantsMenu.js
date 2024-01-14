@@ -3,17 +3,20 @@ import { useParams } from "react-router-dom";
 import Shimmer from "../../episode9/components/Shimmer";
 import useRestaurantCard from "../../episode9/utils/useRestaurantCard";
 import starLogo from "../../imges/star.png";
+import RestaurantsCategory from "./RestaurantsCategory";
+import { useState } from "react";
 
 const RestaurantsMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantCard(resId);
+  const [isActive, setIsActive] = useState(null);
 
   if (resInfo === null) return <Shimmer />;
 
   const {
     name,
     avgRating,
-    costForTwoMessages,
+    costForTwoMessage,
     cuisines,
     sla,
     totalRatingsString,
@@ -21,63 +24,60 @@ const RestaurantsMenu = () => {
   } = resInfo?.cards[0]?.card?.card?.info;
 
   const itemCards =
-    resInfo.cards
-      .find((x) => x.groupedCard)
-      ?.groupedCard?.cardGroupMap?.REGULAR.cards.map((x) => x.card.card)
-      .filter((x) => x["@type"] === CARD_ID)
-      .map((x) => x.itemCards)
-      .flat()
-      .map((x) => x.card.info) || [];
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (x) =>
+        x?.card?.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
-  const uniqueMenuItems = [];
-  itemCards.map((item) => {
-    if (!uniqueMenuItems.find((x) => x.id === item.id)) {
-      uniqueMenuItems.push(item);
-    }
-  });
-
+  const handleIndex = (index) => {
+    index === isActive ? setIsActive(null) : setIsActive(index);
+  };
   return (
     <div>
-      <div>
+      <div className="bg-slate-300 w-9/12 m-auto my-1 p-3 flex items-center justify-between">
         <div>
-          <h2 className="font-bold">{name}</h2>
+          <h2 className="font-bold text-2xl">{name}</h2>
           <p>{cuisines.join(", ")}</p>
           <p>{feeDetails.message}</p>
         </div>
-        <div>
-          <h3>{costForTwoMessages}</h3>
-          <h4>{sla.slaString}</h4>
+        <div className="bg-slate-700 text-white p-2 rounded-md text-center">
+          <h3 className="font-bold ">{costForTwoMessage}</h3>
+          <h4 className="text-sm">{sla.slaString}</h4>
         </div>
-        <div>
-          <p className="rate">
-            <img src={starLogo} className="star" /> {avgRating}
+        <div className="px-3 bg-slate-700 text-white p-1 rounded-md">
+          <p className="flex bg-green-400 rounded-xl w-16 p-1 m-auto">
+            <img className="w-7 px-1" src={starLogo} /> {avgRating}
           </p>
           <p>{totalRatingsString}</p>
         </div>
       </div>
-      <div>
-        {uniqueMenuItems.map((item) => {
-          const { id, name, description, price, imageId } = item;
-          return (
-            <div key={id} className="itemBox">
-              <div className="text-details">
-                <h4 className="heading">
-                  {name} - {price}
-                </h4>
-                <p>{description}</p>
-              </div>
-              <div className="img-det">
-                <img
-                  src={ITEM_IMG_URL + imageId}
-                  alt="menu-img"
-                  className="img-item"
-                />
-              </div>
-            </div>
-          );
-        })}
+      <div className=" my-5 w-9/12 m-auto">
+        {itemCards.map((item, index) => (
+          <RestaurantsCategory
+            data={item}
+            key={item.card.card.title}
+            showItem={isActive === index}
+            setShowIndex={() => handleIndex(index)}
+          />
+        ))}
       </div>
     </div>
   );
 };
 export default RestaurantsMenu;
+{
+  /* <div className="w-4/6">
+                <h4 className="font-bold text-lg">
+                  {name} - ₹{price / 100}
+                </h4>
+                <p className="text-sm py-2">{description}</p>
+              </div>
+              <div className="h-[100%]">
+                <img
+                  src={ITEM_IMG_URL + imageId}
+                  alt="menu-img"
+                  className="rounded-md h-[100%] "
+                />
+              </div> */
+}

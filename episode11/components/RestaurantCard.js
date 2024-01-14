@@ -17,7 +17,7 @@ const RestaurantCard = ({ resData }) => {
         <h3 className="font-bold p-1">{name}</h3>
         <div className=" flex items-center justify-between my-1">
           <h4 className="flex items-center m-[2px] bg-green-400 px-[3px] rounded-md">
-            <img className="w-4 mx-[2px] " src={starLogo} alt="starLogo" />{" "}
+            <img className="w-4 mx-[2px] " src={starLogo} alt="starLogo" />
             {avgRating}
           </h4>
           <h4 className="font-semibold">{sla.deliveryTime} Mins</h4>
@@ -29,3 +29,18 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 export default RestaurantCard;
+
+//high order components-->
+
+export const withHighRatingLabel = (RestaurantCard) => {
+  return ({ resData }) => {
+    return (
+      <div className="relative">
+        <label className="absolute left-2 bg-green-400 px-2 text-sm font-bold rounded-b">
+          HIGH RATED
+        </label>
+        <RestaurantCard resData={resData} />
+      </div>
+    );
+  };
+};

@@ -2,12 +2,15 @@ import { useState } from "react";
 import useRestaurants from "../../episode11/utils/useRestaurants";
 import Shimmer from "../../episode11/components/Shimmer";
 import { Link } from "react-router-dom";
-import RestaurantCard from "../../episode11/components/RestaurantCard";
+import RestaurantCard, {
+  withHighRatingLabel,
+} from "../../episode11/components/RestaurantCard";
 
 const Body = () => {
   const [filterRestro, setFilterRestro] = useState([]);
   const [resList, restNameFilter] = useRestaurants();
   const [search, setSearch] = useState("");
+  const RestaurantsTopRated = withHighRatingLabel(RestaurantCard);
 
   return (
     <div className="bg-gray-200">
@@ -16,7 +19,7 @@ const Body = () => {
           className="p-2 bg-orange-700 rounded-xl text-white shadow shadow-orange-300 hover:border-red-400 border"
           onClick={() => {
             const filterData = resList.filter((list) => {
-              list.info.avgRating > 4;
+              return list.info.avgRating > 4;
             });
             setFilterRestro(filterData);
           }}
@@ -29,6 +32,7 @@ const Body = () => {
             type="text"
             name="search"
             placeholder="Search restaurants..."
+            value={search}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
@@ -39,7 +43,9 @@ const Body = () => {
               const searchData = resList.filter((item) => {
                 // console.log(search + " " + item);
                 if (search === undefined) return item;
-                item.info.name.toLowerCase().includes(search.toLowerCase());
+                return item.info.name
+                  .toLowerCase()
+                  .includes(search.toLowerCase());
               });
               setFilterRestro(searchData);
               setSearch("");
@@ -57,7 +63,11 @@ const Body = () => {
             (data) => {
               return (
                 <Link to={"/restaurants/" + data.info.id} key={data.info.id}>
-                  <RestaurantCard resData={data} />
+                  {data.info.avgRating >= 4.4 ? (
+                    <RestaurantsTopRated resData={data} />
+                  ) : (
+                    <RestaurantCard resData={data} />
+                  )}
                 </Link>
               );
             }
