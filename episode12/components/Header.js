@@ -1,19 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
-import foodLogo from "../../imges/food-logo.jpg";
+import foodLogo from "../../imges/food1.png";
+import shopCart from "../../imges/shopping_cart.png";
 import useOnlineStatus from "../../episode11/utils/useOnlineStatus";
-import { useContext, useState } from "react";
-import UserContext from "../utils/UserContext";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
 
-  const { loginUser } = useContext(UserContext);
+  const items = useSelector((store) => store.cart.items);
+
   return (
-    <div className="flex p-1 px-20 h-20 z-10 bg-[#7c8ce8] justify-between items-center .header">
-      <div className="h-logo">
-        <img src={foodLogo} className="logo hover:mix-blend-color-burn" />
+    <div className="flex p-1 px-20 h-20 z-10 bg-[#7c8ce8] justify-between items-center fixed right-0 left-0 top-0 ">
+      <div className="">
+        <img src={foodLogo} className="w-24 h-24 rounded-full " />
       </div>
       <ul className="flex items-center gap-3 text-white">
         <p className="font-bold">
@@ -29,28 +31,34 @@ const Header = () => {
           <Link to="/contact">Contact</Link>
         </li>
         <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
-          <Link>Cart</Link>
+          <Link to="/cart">
+            <div className="relative">
+              <img src={shopCart} className="w-10 " />
+              <div className="absolute -right-2 -top-2 bg-black px-1 rounded-full">
+                {items.length === 0 ? null : items.length}
+              </div>
+            </div>
+          </Link>
         </li>
-        <li>{loginUser}</li>
         {login ? (
           <button
             className="p-1 bg-red-500 rounded-md hover:bg-red-400"
             onClick={() => {
               setLogin(false);
-              navigate("/login");
+              navigate("/");
             }}
           >
-            Login
+            Logout
           </button>
         ) : (
           <button
             className="p-1 bg-red-500 rounded-md hover:bg-red-400"
             onClick={() => {
               setLogin(true);
-              navigate("/");
+              navigate("/login");
             }}
           >
-            Logout
+            Login
           </button>
         )}
       </ul>

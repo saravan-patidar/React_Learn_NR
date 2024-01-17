@@ -12,9 +12,6 @@
   color: #222;
 } */
 
-.header {
-  box-shadow: 0 4px 30px #d77e03;
-}
 /* .header {
   padding-inline: 30px;
   background-color: #7c84d3;
@@ -25,21 +22,15 @@
   box-shadow: 0 4px 10px #9e9eee;
   color: white;
 } */
-.h-logo {
-  width: 70px;
-  height: 70px;
+/* .h-logo {
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border-radius: 50%;
   box-shadow: 0 0 10px #efeff7;
   margin-left: 65px;
-  background-color: lightcoral;
-}
-.logo {
-  width: 100px;
-  object-fit: scale-down;
-  transform: scale(1.2);
-  cursor: pointer;
-}
+} */
+
 /* .logo:hover {
   mix-blend-mode: color-burn;
 } */

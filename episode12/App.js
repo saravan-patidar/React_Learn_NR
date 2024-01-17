@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -11,17 +12,21 @@ import Error from "./components/Error";
 // import RestaurantsMenu from "./components/RestaurantsMenu";
 import Login from "./components/Login";
 import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const userName = "shravan ";
 const AppLayout = () => {
   return (
     // // also we pass on useState variable and set function inside value
     <>
-      <UserContext.Provider value={{ loginUser: userName }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loginUser: userName }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -56,6 +61,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
