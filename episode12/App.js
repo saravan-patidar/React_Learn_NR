@@ -7,25 +7,22 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import Contact from "./components/Contact";
+import Help from "./components/Help";
 import Error from "./components/Error";
 // import RestaurantsMenu from "./components/RestaurantsMenu";
 import Login from "./components/Login";
-import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import OrderPlaced from "./components/OrderPlaced";
 
-const userName = "shravan ";
 const AppLayout = () => {
   return (
     // // also we pass on useState variable and set function inside value
     <>
       <Provider store={appStore}>
-        <UserContext.Provider value={{ loginUser: userName }}>
-          <Header />
-          <Outlet />
-          <Footer />
-        </UserContext.Provider>
+        <Header />
+        <Outlet />
+        <Footer />
       </Provider>
     </>
   );
@@ -47,8 +44,8 @@ const appRouter = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/help",
+        element: <Help />,
       },
       {
         path: "/restaurants/:resId",
@@ -65,6 +62,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/order",
+        element: <OrderPlaced />,
       },
     ],
     errorElement: <Error />,

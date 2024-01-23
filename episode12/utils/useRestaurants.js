@@ -3,7 +3,7 @@ import { MAIN_URL } from "./constants";
 
 const useRestaurants = () => {
   const [resLists, setResLists] = useState([]);
-  const [restNameFilter, setRestNameFilter] = useState([]);
+  // const [restNameFilter, setRestNameFilter] = useState([]);
 
   useEffect(() => {
     fetchApi();
@@ -16,8 +16,8 @@ const useRestaurants = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setResLists(list);
-    setRestNameFilter(list);
+    // setRestNameFilter(list);
   };
-  return [resLists, restNameFilter];
+  return [resLists];
 };
 export default useRestaurants;

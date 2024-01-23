@@ -11,16 +11,18 @@ const Header = () => {
   const [login, setLogin] = useState(false);
 
   const items = useSelector((store) => store.cart.items);
+  const userName = useSelector((store) => store.user.userName);
 
   return (
-    <div className="flex p-1 px-20 h-20 z-10 bg-[#7c8ce8] justify-between items-center fixed right-0 left-0 top-0 ">
+    <div className="flex p-1 px-20 h-20 z-10 bg-[#7c8ce8] justify-between items-center fixed right-0 left-0 top-0 sm:">
       <div className="">
         <img src={foodLogo} className="w-24 h-24 rounded-full " />
       </div>
+      <p className="text-orange-500 font-bold">{userName}</p>
+      <p className="font-bold bg-gray-300 p-1 rounded-xl ">
+        {!onlineStatus ? "Offline: 🔴" : "Online: 🟢"}
+      </p>
       <ul className="flex items-center gap-3 text-white">
-        <p className="font-bold">
-          Online Status: {!onlineStatus ? "🔴" : "🟢"}
-        </p>
         <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link to="/">Home</Link>
         </li>
@@ -28,7 +30,7 @@ const Header = () => {
           <Link to="/about">About</Link>
         </li>
         <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
-          <Link to="/contact">Contact</Link>
+          <Link to="/help">Help</Link>
         </li>
         <li className="mx-3 text-xl font-bold hover:bg-red-400 p-1 rounded-md duration-700 transition-all ease-in-out">
           <Link to="/cart">

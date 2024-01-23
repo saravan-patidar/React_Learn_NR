@@ -7,11 +7,13 @@ import RestaurantCard, {
 } from "../../episode12/components/RestaurantCard";
 
 const Body = () => {
-  const [resList, restNameFilter] = useRestaurants();
+  const [resList] = useRestaurants();
+  const [highRated, setHighrated] = useState([]);
   const [resNotFound, setResNotFound] = useState(null);
   const [search, setSearch] = useState("");
   const RestaurantsTopRated = withHighRatingLabel(RestaurantCard);
   const [filterRestro, setFilterRestro] = useState([]);
+  const [isCheck, setIsCheck] = useState(true);
 
   const searchRestaurants = () => {
     if (search != "") {
@@ -25,27 +27,48 @@ const Body = () => {
     } else {
       setResNotFound(null);
       setSearch("");
+      setFilterRestro(resList);
     }
   };
 
   return (
     <div className="bg-gray-200 mt-20">
       <div className="flex p-4 justify-center items-center gap-2">
-        <button
-          className="p-2 bg-orange-700 rounded-xl text-white shadow shadow-orange-300 hover:border-red-400 border"
-          onClick={() => {
-            const filterData = resList.filter((list) => {
-              return list.info.avgRating > 4;
-            });
-            setFilterRestro(filterData);
-          }}
-        >
-          Top rated Restaurants
-        </button>
+        <div>
+          <label
+            className="p-2 bg-orange-700 rounded-xl text-white shadow shadow-orange-300 hover:bg-orange-500 "
+            htmlFor="check"
+          >
+            High Rated
+          </label>
+          <input
+            className="hidden"
+            type="checkbox"
+            id="check"
+            value={isCheck}
+            checked={!isCheck}
+            onChange={(e) => {
+              setIsCheck(!isCheck);
+              if (isCheck) {
+                setHighrated(filterRestro);
+                const filterData = filterRestro.filter((list) => {
+                  return list.info.avgRating > 4.2;
+                });
+                setFilterRestro(filterData);
+              } else {
+                setFilterRestro(highRated);
+              }
+
+              console.log(e.target.value);
+            }}
+          />
+        </div>
+
         <div>
           <input
             className="p-2 rounded-s-full w-80 shadow shadow-orange-300 hover:border-red-400 border-none outline-none"
             type="text"
+            autoComplete="off"
             name="search"
             placeholder="Search restaurants..."
             value={search}
@@ -54,7 +77,7 @@ const Body = () => {
             }}
           />
           <button
-            className="p-2 bg-orange-700 rounded-e-full text-white shadow shadow-orange-300 hover:border-red-400 border"
+            className="p-2 bg-orange-700 rounded-e-full text-white shadow shadow-orange-300 hover:bg-orange-500 "
             onClick={searchRestaurants}
           >
             Search
@@ -72,17 +95,15 @@ const Body = () => {
               </p>
             </div>
           ) : (
-            (filterRestro.length === 0 ? restNameFilter : filterRestro).map(
-              (data) => (
-                <Link to={"/restaurants/" + data.info.id} key={data.info.id}>
-                  {data.info.avgRating >= 4.4 ? (
-                    <RestaurantsTopRated resData={data} />
-                  ) : (
-                    <RestaurantCard resData={data} />
-                  )}
-                </Link>
-              )
-            )
+            (filterRestro.length === 0 ? resList : filterRestro).map((data) => (
+              <Link to={"/restaurants/" + data.info.id} key={data.info.id}>
+                {data.info.avgRating >= 4.4 ? (
+                  <RestaurantsTopRated resData={data} />
+                ) : (
+                  <RestaurantCard resData={data} />
+                )}
+              </Link>
+            ))
           )}
         </div>
       )}

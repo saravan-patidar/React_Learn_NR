@@ -1,11 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ITEM_IMG_URL } from "../utils/constants";
-import { addItems } from "../utils/cartSlice";
+import { addItems, decreaseItems, removeItems } from "../utils/cartSlice";
 
 const ItemList = ({ itemCards }) => {
   const dispatch = useDispatch();
+  const cartItem = useSelector((store) => store.cart.items);
+
   const handleAddItems = (x) => {
     dispatch(addItems(x));
+  };
+  const getItemCount = (id) => {
+    const currItem = cartItem.find((item) => item.card.info.id === id);
+    return currItem ? currItem.quantity : "ADD";
   };
 
   return (
@@ -23,20 +29,33 @@ const ItemList = ({ itemCards }) => {
               </h4>
               <p className="text-sm py-2">{description}</p>
             </div>
-            <div className="min-h-[100px] w-1/6 relative ">
+            <div className="w-2/6 h-44 relative ">
               {!imageId ? null : (
                 <img
                   src={ITEM_IMG_URL + imageId}
                   alt="img"
-                  className="rounded-md h-[100%] "
+                  className="rounded-md h-full w-full "
                 />
               )}
-              <button
-                onClick={() => handleAddItems(x)}
-                className="bg-green-400 p-1  text-md font-bold cursor-pointer absolute rounded-md bottom-1 translate-x-full hover:bg-green-500"
-              >
-                ADD +
-              </button>
+              <div className="absolute rounded-md -translate-x-1/2 left-1/2 bottom-10 bg-slate-300 p-1">
+                <button
+                  className=" text-red-600 font-bold cursor-pointer text-lg px-1"
+                  onClick={() =>
+                    getItemCount(id) === 1
+                      ? dispatch(removeItems(id))
+                      : dispatch(decreaseItems(id))
+                  }
+                >
+                  -
+                </button>
+                <span className="px-2">{getItemCount(id)}</span>
+                <button
+                  onClick={() => handleAddItems(x)}
+                  className=" text-green-600 font-bold cursor-pointer text-lg px-1"
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
         );

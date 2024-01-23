@@ -1,11 +1,8 @@
-import UserContext from "../utils/UserContext";
-import { useContext } from "react";
 const Footer = () => {
-  const { loginUser } = useContext(UserContext);
   return (
-    <div className="footer text-center">
+    <div className="bg-blue-900 text-center text-white">
       <p>
-        Created By: <span className="f-name">Shravan {loginUser}</span>
+        Created By: <span className="f-name">Shravan</span>
         ,&copy;2023 <span className="web_name">Foodaten!</span>
       </p>
     </div>
@@ -13,9 +10,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// // class based components used <UserContext.consumer>
-//     (data)=>{
-//       <h1>{data}</h1>
-//     }
-//     <UserContext.Consumer/>

@@ -35,7 +35,7 @@ const RestaurantsMenu = () => {
   };
   return (
     <div>
-      <div className="bg-slate-300 w-9/12 m-auto my-1 p-3 flex items-center justify-between">
+      <div className="bg-slate-300 w-9/12 m-auto mt-24 my-1 p-3 flex items-center justify-between">
         <div>
           <h2 className="font-bold text-2xl">{name}</h2>
           <p>{cuisines.join(", ")}</p>
