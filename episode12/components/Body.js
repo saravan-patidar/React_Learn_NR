@@ -18,12 +18,13 @@ const Body = () => {
   const searchRestaurants = () => {
     if (search != "") {
       const searchData = resList.filter((item) => {
-        return item.info.name.toLowerCase().includes(search.toLowerCase());
+        return item?.info?.name.toLowerCase().includes(search.toLowerCase());
       });
       setFilterRestro(searchData);
       setSearch("");
-      if (searchData.length === 0)
+      if (searchData.length === 0) {
         return setResNotFound("Restaurants not found !");
+      }
     } else {
       setResNotFound(null);
       setSearch("");

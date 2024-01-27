@@ -25,9 +25,7 @@ const RestaurantsMenu = () => {
 
   const itemCards =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-      (x) =>
-        x?.card?.card["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      (x) => x?.card?.card["@type"] === CARD_ID
     );
 
   const handleIndex = (index) => {
