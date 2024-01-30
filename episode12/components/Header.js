@@ -36,7 +36,10 @@ const Header = () => {
           <Link to="/cart">
             <div className="relative">
               <img src={shopCart} className="w-10 " />
-              <div className="absolute -right-2 -top-2 bg-black px-1 rounded-full">
+              <div
+                data-testid="cart"
+                className="absolute -right-2 -top-2 bg-black px-1 rounded-full"
+              >
                 {items.length === 0 ? null : items.length}
               </div>
             </div>

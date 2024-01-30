@@ -20,6 +20,7 @@ const ItemList = ({ itemCards }) => {
         const { name, price, description, imageId, id } = x?.card?.info;
         return (
           <div
+            data-testid="foodItems"
             key={id}
             className="flex justify-between items-center p-2 m-3 shadow-md bg-slate-100"
           >
