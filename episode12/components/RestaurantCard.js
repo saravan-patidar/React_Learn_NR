@@ -2,10 +2,13 @@ import starLogo from "../../imges/star.png";
 import { RES_IMG_URl } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
-  const { name, cloudinaryImageId, costForTwo, sla, avgRating, cuisines } =
-    resData?.info;
+  const { cloudinaryImageId, name, costForTwo, sla, avgRating, cuisines } =
+    resData;
   return (
-    <div className="bg-gray-300 border w-60 h-80 m-3 p-2 rounded-xl shadow-my-s hover:bg-indigo-300 transition-all ease-in-out duration-700">
+    <div
+      data-testid="resCard"
+      className="bg-gray-300 border w-60 h-80 m-3 p-2 rounded-xl shadow-my-s hover:bg-indigo-300 transition-all ease-in-out duration-700"
+    >
       <div className="h-2/4 rounded-lg">
         <img
           className="w-[100%] h-[100%] rounded-lg"

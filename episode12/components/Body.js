@@ -7,7 +7,7 @@ import RestaurantCard, {
 } from "../../episode12/components/RestaurantCard";
 
 const Body = () => {
-  const [resList] = useRestaurants();
+  const resList = useRestaurants();
   const [highRated, setHighrated] = useState([]);
   const [resNotFound, setResNotFound] = useState(null);
   const [search, setSearch] = useState("");
@@ -67,6 +67,7 @@ const Body = () => {
 
         <div>
           <input
+            data-testid="searchBox"
             className="p-2 rounded-s-full w-80 shadow shadow-orange-300 hover:border-red-400 border-none outline-none"
             type="text"
             autoComplete="off"
@@ -97,11 +98,11 @@ const Body = () => {
             </div>
           ) : (
             (filterRestro.length === 0 ? resList : filterRestro).map((data) => (
-              <Link to={"/restaurants/" + data.info.id} key={data.info.id}>
-                {data.info.avgRating >= 4.4 ? (
-                  <RestaurantsTopRated resData={data} />
+              <Link to={"/restaurants/" + data?.info?.id} key={data?.info?.id}>
+                {data?.info?.avgRating >= 4.4 ? (
+                  <RestaurantsTopRated resData={data?.info} />
                 ) : (
-                  <RestaurantCard resData={data} />
+                  <RestaurantCard resData={data?.info} />
                 )}
               </Link>
             ))

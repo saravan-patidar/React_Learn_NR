@@ -18,6 +18,6 @@ const useRestaurants = () => {
     setResLists(list);
     // setRestNameFilter(list);
   };
-  return [resLists];
+  return resLists;
 };
 export default useRestaurants;
